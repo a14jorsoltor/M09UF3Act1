@@ -7,8 +7,8 @@ import java.net.UnknownHostException;
 
 public class ClientPing {
     public static void main(String[] args) throws IOException {
-        String hostName = "192.168.205.113";
-        int portNumber = 8005;
+        String hostName = "localhost";
+        int portNumber = 1234;
         if (args.length != 2) {
             System.err.println("Usage: java EchoClient " + hostName + " " + portNumber);
 

@@ -11,7 +11,7 @@ public class ServerPong {
         if (args.length != 1) {
             System.err.println("Usage: java EchoServer " + portNumber);
 
-
+// TOT EL TRY EN UN FILL, ON LI PASEM EL SERVERSOCKET I UN NOM PE.
             try (
                     ServerSocket serverSocket = new ServerSocket(portNumber);
                     Socket clientSocket = serverSocket.accept();
