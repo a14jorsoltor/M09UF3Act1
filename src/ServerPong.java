@@ -1,27 +1,24 @@
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class ServerPong {
     public static void main(String[] args) throws IOException {
-        int portNumber = 1234;
+        int portNumber = 40004;
+        int clientConnectat = 0;
         if (args.length != 1) {
             System.err.println("Usage: java EchoServer " + portNumber);
 
 // TOT EL TRY EN UN FILL, ON LI PASEM EL SERVERSOCKET I UN NOM PE.
+
             try (
+
                     ServerSocket serverSocket = new ServerSocket(portNumber);
-                    Socket clientSocket = serverSocket.accept();
-                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream()));
             ) {
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    out.println("Hola soc el pong reponent al ping: " + inputLine);
+                while(true) {
+                    FilServer filServer = new FilServer(serverSocket.accept());
+                    filServer.start();
+                    System.out.println("Client conectat " + ++clientConnectat);
                 }
             } catch (IOException e) {
                 System.out.println("Exception caught when trying to listen on port "
